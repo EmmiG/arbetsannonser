@@ -1,6 +1,6 @@
 class FetchController {
     fetchStockholmJobs(rows = 10, countyId = 1) {
-        fetch(`http://api.arbetsformedlingen.se/af/v0/platsannonser/matchning?nyckelord=sverige&sida=1&antalrader=1000`)
+        fetch(`https://api.arbetsformedlingen.se/af/v0/platsannonser/matchning?nyckelord=sverige&sida=1&antalrader=1000`)
             .then((response) => response.json())
             .then((jobs) => {
                 new DOM().displayJob(jobs);
@@ -11,7 +11,7 @@ class FetchController {
             });
     }
     fetchJobDetails(id) {
-        return fetch(`http://api.arbetsformedlingen.se/af/v0/platsannonser/${id}`)
+        return fetch(`https://api.arbetsformedlingen.se/af/v0/platsannonser/${id}`)
             .then(response => response.json())
             .then(jobs => {
                 new DOM().displayJobDetails(jobs);
@@ -21,7 +21,7 @@ class FetchController {
             });
     }
     fetchSearchedJobs(searchedInput) {
-        fetch(`http://api.arbetsformedlingen.se/af/v0/platsannonser/soklista/yrken/${searchedInput}`)
+        fetch(`https://api.arbetsformedlingen.se/af/v0/platsannonser/soklista/yrken/${searchedInput}`)
             .then(response => response.json())
             .then(jobs => {
                 new DOM().displaySearchedJobsByOccupationalTile(jobs);
@@ -31,7 +31,7 @@ class FetchController {
             });
     }
     fetchJobsByOccupationalId(id) {
-        return fetch(`http://api.arbetsformedlingen.se/af/v0/platsannonser/matchning?yrkesid=${id}&sida=1&antalrader=1000`)
+        return fetch(`https://api.arbetsformedlingen.se/af/v0/platsannonser/matchning?yrkesid=${id}&sida=1&antalrader=1000`)
             .then(response => response.json())
             .then(jobs => {
                 const newJobs = {
@@ -57,7 +57,7 @@ class FetchController {
             });
     }
     fetchCategories() {
-        fetch("http://api.arbetsformedlingen.se/af/v0/platsannonser/soklista/yrkesomraden")
+        fetch("https://api.arbetsformedlingen.se/af/v0/platsannonser/soklista/yrkesomraden")
             .then((response) => response.json())
             .then((categories) => {
                 new DOM().displayCategoriesDOM(categories);
@@ -67,7 +67,7 @@ class FetchController {
             });
     }
     fetchJobsByCategories(id) {
-        fetch(`http://api.arbetsformedlingen.se/af/v0/platsannonser/matchning?yrkesomradeid=${id}&sida=1&antalrader=1000`)
+        fetch(`https://api.arbetsformedlingen.se/af/v0/platsannonser/matchning?yrkesomradeid=${id}&sida=1&antalrader=1000`)
             .then(response => response.json())
             .then(jobsByCategories => {
                 new DOM().displayJob(jobsByCategories);
@@ -78,7 +78,7 @@ class FetchController {
             });
     }
     fetchCounty(){
-        fetch(`http://api.arbetsformedlingen.se/af/v0/platsannonser/soklista/lan2`)
+        fetch(`https://api.arbetsformedlingen.se/af/v0/platsannonser/soklista/lan2`)
             .then(response => response.json())
             .then(county => {
                 new DOM().displayOptionlan(county);
@@ -88,7 +88,7 @@ class FetchController {
             });
     }
     fetchCommune(countyId){
-        fetch(`http://api.arbetsformedlingen.se/af/v0/platsannonser/soklista/kommuner?lanid=${countyId}`)
+        fetch(`https://api.arbetsformedlingen.se/af/v0/platsannonser/soklista/kommuner?lanid=${countyId}`)
             .then(response => response.json())
             .then(commune => {
                 new DOM().displayOptionCommune(commune);
